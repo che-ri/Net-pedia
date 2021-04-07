@@ -1,6 +1,6 @@
-import React, { Component } from "react";
+import React from "react";
 
-export class Counter extends Component {
+class Counter extends React.Component {
     state = {
         count: 0,
     };
