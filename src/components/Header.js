@@ -2,7 +2,6 @@ import React from "react";
 import Styled from "styled-components";
 import { Link, withRouter } from "react-router-dom";
 
-
 const StyledHeader = Styled.header`
 height:40px;
 width:100%;
@@ -23,7 +22,7 @@ background:#141414;
                 p{
                     font-size: 1rem;
                     font-weight:600;
-                    color:red;
+                    color:#e50914;
                     span{
                         color:white;
                     }
@@ -61,23 +60,27 @@ background:#141414;
 `;
 
 const Header = () => {
-    return <StyledHeader>
-        <div className="inner">
-            <div className="header__column--left">
-                <div className="logo">
-                    <p>NET<span>PEDIA</span></p>
+    return (
+        <StyledHeader>
+            <div className="inner">
+                <div className="header__column--left">
+                    <div className="logo">
+                        <p>
+                            NET<span>PEDIA</span>
+                        </p>
+                    </div>
+                    <div className="controls">
+                        <Link to="/test">영화</Link>
+                        <Link to="/test">TV 프로그램</Link>
+                        <Link to="/test">책</Link>
+                    </div>
                 </div>
-                <div className="controls">
-                    <Link to="/test">영화</Link>
-                    <Link to="/test">TV 프로그램</Link>
-                    <Link to="/test">책</Link>
+                <div className="header__column--right">
+                    <input type="text" placeholder="검색" />
                 </div>
             </div>
-            <div className="header__column--right">
-                <input type="text" placeholder="검색"/>
-            </div>
-        </div>
-    </StyledHeader>;
+        </StyledHeader>
+    );
 };
 
 export default withRouter(Header);

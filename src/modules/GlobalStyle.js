@@ -27,6 +27,7 @@ button, input {
 }
 body{
   background:#141414;
+  color:#fff;
   /* 스크롤바 제거 */
   &::-webkit-scrollbar {
     display: none;
