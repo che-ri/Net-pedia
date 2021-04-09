@@ -4,8 +4,8 @@ import {
     Route,
     Switch,
 } from "react-router-dom";
-import PrintMovies from "./Layout";
-import Test from "./Layout";
+import PrintMovies from "../pages/PrintMovies";
+import Test from "../pages/Test";
 
 const AppRouter = () => {
     return (
