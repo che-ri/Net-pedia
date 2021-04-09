@@ -22,7 +22,7 @@ ul {
 a {
   text-decoration: none;
 }
-button {
+button, input {
   border: 0;
 }
 body{
