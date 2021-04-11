@@ -8,7 +8,6 @@ const Movies = () => {
     const [isLoading, setIsloading] = useState(true);
     const [data, setData] = useState([]);
     const [popular,setPopular] = useState({});
-
     const GetMovie = async () => {
         //themoviedb에서 인기있는 영화목록을 가져왔다.
         const {
@@ -21,21 +20,22 @@ const Movies = () => {
         setIsloading(false);
         setPopular(results.shift());
         setData(results);
-        console.log(data);
-        console.log(popular);
+        
         //영화 포스터의 값을 얻고자 했다.
         //https://image.tmdb.org/t/p/w500//{소스값} 을 적으면, 이미지가 나타난다.
         //자세한 것은 https://stockant.tistory.com/564 블로그 참조.
-    };
 
+    };
 
     //마운트가 끝나자마자 API를 가져올 것이다.
     useEffect(() => {
         GetMovie();
-        data.map((item) => console.log(item.poster_path));
-    }, []);
 
+        // data.map((item) => console.log(item.poster_path));
+    }, []);
+    
     const StyledPopularMovie = Styled.main`
+        position:relative;
         height:300px;
         display:flex;
         justify-content:space-between;
@@ -43,7 +43,8 @@ const Movies = () => {
         margin-top:30px;
         .popular__img{
             img{
-                height:250px;
+                height:100%;
+                width:200px;
                 object-fit:fill;
             }
         }
@@ -51,11 +52,10 @@ const Movies = () => {
             position:relative;
             display:flex;
             flex-direction:column;
-            justify-content:center;
+            justify-content:space-between;
             margin-left: 20px;
             h3{
                 font-size:1.5rem;
-                position:absolute;
                 top:0;
                 color:#e50914;
                 text-transform:uppercase;
@@ -66,21 +66,24 @@ const Movies = () => {
             p{
                 font-size:.6rem;
             }
-        }
-        
+        } 
 `;
 
     return (
         <Layout>
             <StyledPopularMovie>
-                <div className="popular__img">
-                    <img src={`https://image.tmdb.org/t/p/w300/${popular.poster_path}`} alt={popular.title} title={popular.title}/>
-                </div>
-                <div className="popular__summary">
-                    <h3>Popular Movie</h3>
-                    <h4>{popular.title}</h4>
-                    <p>{popular.overview}</p>
-                </div>
+                    <div className="popular__img">
+                        <img src={`https://image.tmdb.org/t/p/original/${popular.poster_path}`} alt={popular.title} title={popular.title}/>
+                    </div>
+                    <div className="popular__summary">
+                        <h3>Popular Movie</h3>
+                        <div className="popular__info">
+                            <h4>{popular.title}</h4>
+                            <p>{popular.overview}</p>
+                        </div>
+                        <span>평균 ★{popular.vote_average}
+                        <span> ({popular.vote_count}명)</span></span>
+                    </div>
             </StyledPopularMovie>
             <section className="movies__container">
                 {isLoading ? (
