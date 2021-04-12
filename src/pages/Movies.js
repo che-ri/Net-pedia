@@ -41,6 +41,7 @@ const Movies = () => {
         justify-content:space-between;
         padding:0 15%;
         margin-top:30px;
+        font-size:15px;
         .popular__img{
             img{
                 height:100%;
@@ -55,16 +56,17 @@ const Movies = () => {
             justify-content:space-between;
             margin-left: 20px;
             h3{
-                font-size:1.5rem;
+                font-size:2em;
                 top:0;
                 color:#e50914;
                 text-transform:uppercase;
             }
             h4{
                 margin-bottom:10px;
+                font-size:1.5em;
             }
             p{
-                font-size:.6rem;
+                font-size:1em;
             }
         } 
 `;
@@ -81,7 +83,7 @@ const Movies = () => {
                             <h4>{popular.title}</h4>
                             <p>{popular.overview}</p>
                         </div>
-                        <span>평균 ★{popular.vote_average}
+                        <span>평점 ★{popular.vote_average}
                         <span> ({popular.vote_count}명)</span></span>
                     </div>
             </StyledPopularMovie>
