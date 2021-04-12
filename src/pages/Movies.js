@@ -3,6 +3,7 @@ import Styled from "styled-components";
 import PropTypes from "prop-types";
 import axios from "axios";
 import Layout from "../components/Layout";
+import { Link} from "react-router-dom";
 
 const Movies = () => {
     const [isLoading, setIsloading] = useState(true);
@@ -68,6 +69,15 @@ const Movies = () => {
             p{
                 font-size:1em;
             }
+            .popular__controls{
+                display:flex;
+                justify-content:space-between;
+                a{
+                    color:#fff;
+                    border-bottom: 1px solid #fff
+                }
+            }
+            
         } 
 `;
 
@@ -83,8 +93,12 @@ const Movies = () => {
                             <h4>{popular.title}</h4>
                             <p>{popular.overview}</p>
                         </div>
-                        <span>평점 ★{popular.vote_average}
-                        <span> ({popular.vote_count}명)</span></span>
+                        <div className="popular__controls">
+                            <span>평점 ★{popular.vote_average}
+                                <span> ({popular.vote_count}명)</span>
+                            </span>
+                             <Link to="/test">더보기</Link>
+                        </div>
                     </div>
             </StyledPopularMovie>
             <section className="movies__container">

@@ -61,11 +61,11 @@ const Header = () => {
     return (
         <StyledHeader>
             <div className="header__column--left">
-                <div className="logo">
+                <Link to="/" className="logo">
                     <p>
                         NET<span>PEDIA</span>
                     </p>
-                </div>
+                </Link>
                 <div className="controls">
                     <Link to="/test">영화</Link>
                     <Link to="/test">TV 프로그램</Link>
