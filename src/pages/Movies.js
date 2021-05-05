@@ -55,7 +55,7 @@ const Movies = () => {
         display:flex;
         justify-content:space-between;
         padding:0 15%;
-        margin-top:30px;
+        margin:30px;
         font-size:15px;
         .popular__img{
             img{
@@ -96,6 +96,20 @@ const Movies = () => {
         } 
 `;
 
+  const StyledMovieList = Styled.div`
+  padding:20px;
+  section{
+    width:100%;
+    .movies__list{
+      display:grid;
+      grid-template-columns:repeat(3,1fr);
+      grid-auto-rows:1fr;
+      gap:20px;
+    }
+    
+  }
+  `;
+
   return (
     <Layout>
       <StyledPopularMovie>
@@ -113,29 +127,31 @@ const Movies = () => {
           />
         ))}
       </StyledPopularMovie>
-      <section className="movies__container">
-        {isLoading ? (
-          <div className="loader">
-            <span className="loader__text">Loading...</span>
-          </div>
-        ) : (
-          <div className="movies__list">
-            {data.map((movie) => (
-              <MoviesData
-                //data안에 사용할 정보들을 prop으로 선언해주었다.
-                key={movie.id}
-                id={movie.id}
-                title={movie.title}
-                overview={movie.overview}
-                vote_average={movie.vote_average}
-                vote_count={movie.vote_count}
-                poster_path={`https://image.tmdb.org/t/p/w300/${movie.poster_path}`}
-                genres={movie.genres.map((genre) => genre.name)}
-              />
-            ))}
-          </div>
-        )}
-      </section>
+      <StyledMovieList>
+        <section className="movies__container">
+          {isLoading ? (
+            <div className="loader">
+              <span className="loader__text">Loading...</span>
+            </div>
+          ) : (
+            <div className="movies__list">
+              {data.map((movie) => (
+                <MoviesData
+                  //data안에 사용할 정보들을 prop으로 선언해주었다.
+                  key={movie.id}
+                  id={movie.id}
+                  title={movie.title}
+                  overview={movie.overview}
+                  vote_average={movie.vote_average}
+                  vote_count={movie.vote_count}
+                  poster_path={`https://image.tmdb.org/t/p/w300/${movie.poster_path}`}
+                  genres={movie.genres.map((genre) => genre.name)}
+                />
+              ))}
+            </div>
+          )}
+        </section>
+      </StyledMovieList>
     </Layout>
   );
 };
@@ -190,13 +206,8 @@ function MoviesData({
   return (
     <div className="movies__movie">
       <img src={poster_path} alt={title} title={title} />
-      <p>
-        평점 ★{vote_average}
-        <span> ({vote_count}명)</span>
-        <span>장르 : {genres.join(" ")}</span>
-      </p>
+      <p>평점 ★{vote_average}</p>
       <h3 className="movie__title">{title}</h3>
-      <p className="movie__summary">{overview}</p>
     </div>
   );
 }
