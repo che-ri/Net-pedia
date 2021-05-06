@@ -43,11 +43,19 @@ const Movies = () => {
 
     const StyledPopularMovie = Styled.main`
         position:relative;
-        height:300px;
+        background-color:rgba(0,0,0,0.6);
+        .popular__splash{
+          position:absolute;
+          z-index:-1;
+          width:100%;
+          height:380px;
+        }
+        .popular__inner{
         display:flex;
         justify-content:space-between;
-        padding:0 15%;
-        margin:30px;
+        height:380px;
+        padding:30px 15%;
+        /* margin:30px; */
         font-size:15px;
         .popular__img{
             img{
@@ -86,6 +94,8 @@ const Movies = () => {
             }
             
         } 
+      }
+        
 `;
 
     const StyledMovieList = Styled.div`
@@ -118,7 +128,8 @@ const Movies = () => {
                         overview={popularMovie.overview}
                         vote_average={popularMovie.vote_average}
                         vote_count={popularMovie.vote_count}
-                        poster_path={`https://image.tmdb.org/t/p/w300/${popularMovie.poster_path}`}
+                        poster_path={popularMovie.poster_path}
+                        backdrop_path={popularMovie.backdrop_path}
                         genres={popularMovie.genres.map(genre => genre.name)}
                     />
                 ))}
@@ -152,25 +163,28 @@ const Movies = () => {
     );
 };
 
-function PopularData({ id, title, overview, vote_average, vote_count, poster_path, genres }) {
+function PopularData({ id, title, overview, vote_average, vote_count, poster_path, backdrop_path, genres }) {
     return (
         <>
-            <div className="popular__img">
-                <img src={`https://image.tmdb.org/t/p/original/${poster_path}`} alt={title} title={title} />
-            </div>
-            <div className="popular__summary">
-                <h3>Popular Movie</h3>
-                <div className="popular__info">
-                    <h4>{title}</h4>
-                    <p>{overview}</p>
+            <img className="popular__splash" src={`https://image.tmdb.org/t/p/original/${backdrop_path}`} />
+            <div className="popular__inner">
+                <div className="popular__img">
+                    <img src={`https://image.tmdb.org/t/p/w300/${poster_path}`} alt={title} title={title} />
                 </div>
-                <div className="popular__controls">
-                    <span>
-                        평점 ★{vote_average}
-                        <span> ({vote_count}명)</span>
-                        <p>장르 : {genres.join(' ')}</p>
-                    </span>
-                    <Link to="/test">더보기</Link>
+                <div className="popular__summary">
+                    <h3>Popular Movie</h3>
+                    <div className="popular__info">
+                        <h4>{title}</h4>
+                        <p>{overview}</p>
+                    </div>
+                    <div className="popular__controls">
+                        <span>
+                            평점 ★{vote_average}
+                            <span> ({vote_count}명)</span>
+                            <p>장르 : {genres.join(' ')}</p>
+                        </span>
+                        <Link to="/test">더보기</Link>
+                    </div>
                 </div>
             </div>
         </>
