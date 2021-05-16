@@ -6,7 +6,6 @@ import Layout from '../components/Layout';
 import { Link } from 'react-router-dom';
 
 const Movies = () => {
-    const [isLoading, setIsloading] = useState(true);
     const [data, setData] = useState([]);
     const [popular, setPopular] = useState([]);
     const GetMovie = async () => {
@@ -28,7 +27,6 @@ const Movies = () => {
         //state에 영화목록을 저장한다.
         setPopular([newMovieData.shift()]);
         setData(newMovieData);
-        setIsloading(false);
         //영화 포스터의 값을 얻고자 했다.
         //https://image.tmdb.org/t/p/w500//{소스값} 을 적으면, 이미지가 나타난다.
         //자세한 것은 https://stockant.tistory.com/564 블로그 참조.
@@ -136,27 +134,21 @@ const Movies = () => {
             </StyledPopularMovie>
             <StyledMovieList>
                 <section className="movies__container">
-                    {isLoading ? (
-                        <div className="loader">
-                            <span className="loader__text">Loading...</span>
-                        </div>
-                    ) : (
-                        <div className="movies__list">
-                            {data.map(movie => (
-                                <MoviesData
-                                    //data안에 사용할 정보들을 prop으로 선언해주었다.
-                                    key={movie.id}
-                                    id={movie.id}
-                                    title={movie.title}
-                                    overview={movie.overview}
-                                    vote_average={movie.vote_average}
-                                    vote_count={movie.vote_count}
-                                    poster_path={`https://image.tmdb.org/t/p/w300/${movie.poster_path}`}
-                                    genres={movie.genres.map(genre => genre.name)}
-                                />
-                            ))}
-                        </div>
-                    )}
+                    <div className="movies__list">
+                        {data.map(movie => (
+                            <MoviesData
+                                //data안에 사용할 정보들을 prop으로 선언해주었다.
+                                key={movie.id}
+                                id={movie.id}
+                                title={movie.title}
+                                overview={movie.overview}
+                                vote_average={movie.vote_average}
+                                vote_count={movie.vote_count}
+                                poster_path={`https://image.tmdb.org/t/p/w300/${movie.poster_path}`}
+                                genres={movie.genres.map(genre => genre.name)}
+                            />
+                        ))}
+                    </div>
                 </section>
             </StyledMovieList>
         </Layout>
@@ -166,7 +158,7 @@ const Movies = () => {
 function PopularData({ id, title, overview, vote_average, vote_count, poster_path, backdrop_path, genres }) {
     return (
         <>
-            <img className="popular__splash" src={`https://image.tmdb.org/t/p/original/${backdrop_path}`} />
+            <img className="popular__splash" alt={title} src={`https://image.tmdb.org/t/p/original/${backdrop_path}`} />
             <div className="popular__inner">
                 <div className="popular__img">
                     <img src={`https://image.tmdb.org/t/p/w300/${poster_path}`} alt={title} title={title} />
