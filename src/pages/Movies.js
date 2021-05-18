@@ -20,13 +20,14 @@ const Movies = () => {
 
         const newMovieData = results.map(({ genre_ids: genreIds, ...movieItem }) => {
             const matchGenres = genres.filter(genre => genreIds.includes(genre.id));
-            const newMovie = { ...movieItem, genres: matchGenres };
+            let newMovie = { ...movieItem, genres: matchGenres };
+            console.log(newMovie);
             return newMovie;
         });
 
         //state에 영화목록을 저장한다.
         setPopular([newMovieData.shift()]);
-        setData(newMovieData);
+        setData(newMovieData.slice(0, 18));
         //영화 포스터의 값을 얻고자 했다.
         //https://image.tmdb.org/t/p/w500//{소스값} 을 적으면, 이미지가 나타난다.
         //자세한 것은 https://stockant.tistory.com/564 블로그 참조.
