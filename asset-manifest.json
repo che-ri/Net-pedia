@@ -1,7 +1,7 @@
 {
   "files": {
-    "main.js": "/net-pedia/static/js/main.3904e349.chunk.js",
-    "main.js.map": "/net-pedia/static/js/main.3904e349.chunk.js.map",
+    "main.js": "/net-pedia/static/js/main.bb2e2c4b.chunk.js",
+    "main.js.map": "/net-pedia/static/js/main.bb2e2c4b.chunk.js.map",
     "runtime-main.js": "/net-pedia/static/js/runtime-main.ac2bd05a.js",
     "runtime-main.js.map": "/net-pedia/static/js/runtime-main.ac2bd05a.js.map",
     "static/js/2.424f0c41.chunk.js": "/net-pedia/static/js/2.424f0c41.chunk.js",
@@ -12,6 +12,6 @@
   "entrypoints": [
     "static/js/runtime-main.ac2bd05a.js",
     "static/js/2.424f0c41.chunk.js",
-    "static/js/main.3904e349.chunk.js"
+    "static/js/main.bb2e2c4b.chunk.js"
   ]
 }
