@@ -187,11 +187,11 @@ function PopularData({ id, title, overview, vote_average, vote_count, poster_pat
 function MoviesData({ id, title, overview, vote_average, vote_count, poster_path, genres }) {
     //data를 잘 가져왔다면, data 안에 title을 렌더링 할 것이다.
     return (
-        <div className="movies__movie">
+        <Link to="/detail" className="movies__movie">
             <img src={poster_path} alt={title} title={title} />
             <p>평점 ★{vote_average}</p>
             <h3 className="movie__title">{title}</h3>
-        </div>
+        </Link>
     );
 }
 
