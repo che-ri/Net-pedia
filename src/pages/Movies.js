@@ -189,7 +189,7 @@ function MoviesData({ id, title, overview, vote_average, vote_count, poster_path
     return (
         <Link
             to={{
-                pathname: '/detail',
+                pathname: `/detail/${id}`,
                 state: {
                     title,
                     overview,

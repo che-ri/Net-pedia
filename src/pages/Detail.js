@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import Styled from 'styled-components';
 
 const StyledDetail = Styled.div`
@@ -8,6 +8,12 @@ text-align: center;
 `;
 
 const Detail = props => {
+    useEffect(() => {
+        if (props === undefined) {
+            props.history.push('/');
+        }
+    }, []);
+    console.log(props);
     const movie = props.location.state;
     return (
         <StyledDetail>

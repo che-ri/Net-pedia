@@ -8,7 +8,7 @@ const AppRouter = () => {
         <Router>
             <Switch>
                 <Route exact path="/" component={Movies} />
-                <Route exact path="/detail" component={Detail} />
+                <Route exact path="/detail/:id" component={Detail} />
                 <Route exact path="/test" component={Test} />
                 <Redirect from="*" to="/" />
             </Switch>
