@@ -128,7 +128,7 @@ const Movies = () => {
                         overview={popularMovie.overview}
                         vote_average={popularMovie.vote_average}
                         vote_count={popularMovie.vote_count}
-                        poster_path={popularMovie.poster_path}
+                        poster_path={`https://image.tmdb.org/t/p/w300/${popularMovie.poster_path}`}
                         backdrop_path={popularMovie.backdrop_path}
                         genres={popularMovie.genres.map(genre => genre.name)}
                     />
@@ -163,7 +163,7 @@ function PopularData({ id, title, overview, vote_average, vote_count, poster_pat
             <img className="popular__splash" alt={title} src={`https://image.tmdb.org/t/p/original/${backdrop_path}`} />
             <div className="popular__inner">
                 <div className="popular__img">
-                    <img src={`https://image.tmdb.org/t/p/w300/${poster_path}`} alt={title} title={title} />
+                    <img src={poster_path} alt={title} title={title} />
                 </div>
                 <div className="popular__summary">
                     <h3>Popular Movie</h3>
@@ -177,7 +177,22 @@ function PopularData({ id, title, overview, vote_average, vote_count, poster_pat
                             <span> ({vote_count}명)</span>
                             <p>장르 : {genres.join(' ')}</p>
                         </span>
-                        <Link to="/test">더보기</Link>
+                        <Link
+                            to={{
+                                pathname: `/detail/${id}`,
+                                state: {
+                                    title,
+                                    overview,
+                                    vote_average,
+                                    vote_count,
+                                    poster_path,
+                                    genres,
+                                },
+                            }}
+                            className="movies__movie"
+                        >
+                            더보기
+                        </Link>
                     </div>
                 </div>
             </div>
