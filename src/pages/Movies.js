@@ -47,19 +47,19 @@ const Movies = () => {
           position:absolute;
           z-index:-1;
           width:100%;
-          height:380px;
+          height:500px;
         }
         .popular__inner{
         display:flex;
         justify-content:space-between;
-        height:380px;
-        padding:30px 15%;
+        height:500px;
+        padding:7% 15%;
         /* margin:30px; */
         font-size:15px;
         .popular__img{
             img{
                 height:100%;
-                width:200px;
+                width:250px;
                 object-fit:fill;
             }
         }
@@ -68,12 +68,13 @@ const Movies = () => {
             display:flex;
             flex-direction:column;
             justify-content:space-between;
-            margin-left: 20px;
+            margin-left: 7%;
             h3{
                 font-size:2em;
                 top:0;
                 color:#e50914;
                 text-transform:uppercase;
+                line-height:1;
             }
             h4{
                 margin-bottom:10px;

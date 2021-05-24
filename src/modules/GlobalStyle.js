@@ -1,4 +1,4 @@
-import { createGlobalStyle } from "styled-components";
+import { createGlobalStyle } from 'styled-components';
 
 export const GlobalStyle = createGlobalStyle`
 @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100;300;400;500;700;900&display=swap');
@@ -21,6 +21,7 @@ ul {
 }
 a {
   text-decoration: none;
+  color:white;
 }
 button, input {
   border: 0;
