@@ -69,16 +69,22 @@ const Movies = () => {
             flex-direction:column;
             justify-content:space-between;
             margin-left: 7%;
-            h3{
-                font-size:2em;
-                top:0;
-                color:#e50914;
-                text-transform:uppercase;
+            .popular__label{
+                font-size:1em;
+                display:flex;
+                justify-content:flex-end;
                 line-height:1;
+                div{
+                    background-color:#e50914;
+                    padding:7px 17px;
+                    border-radius : 3px;
+                    span{
+                    }
+                }
             }
             h4{
-                margin-bottom:10px;
-                font-size:1.5em;
+                margin-bottom:20px;
+                font-size:2em;
             }
             p{
                 font-size:1em;
@@ -166,7 +172,11 @@ function PopularData({ id, title, overview, vote_average, vote_count, poster_pat
                     <img src={poster_path} alt={title} title={title} />
                 </div>
                 <div className="popular__summary">
-                    <h3>Popular Movie</h3>
+                    <div className="popular__label">
+                        <div>
+                            <span>POPULAR</span>
+                        </div>
+                    </div>
                     <div className="popular__info">
                         <h4>{title}</h4>
                         <p>{overview}</p>
