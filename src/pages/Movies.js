@@ -21,13 +21,13 @@ const Movies = () => {
         const newMovieData = results.map(({ genre_ids: genreIds, ...movieItem }) => {
             const matchGenres = genres.filter(genre => genreIds.includes(genre.id));
             let newMovie = { ...movieItem, genres: matchGenres };
-            console.log(newMovie);
             return newMovie;
         });
 
         //state에 영화목록을 저장한다.
         setPopular([newMovieData.shift()]);
         setData(newMovieData.slice(0, 18));
+        console.log(newMovieData);
         //영화 포스터의 값을 얻고자 했다.
         //https://image.tmdb.org/t/p/w500//{소스값} 을 적으면, 이미지가 나타난다.
         //자세한 것은 https://stockant.tistory.com/564 블로그 참조.
@@ -36,8 +36,6 @@ const Movies = () => {
     //마운트가 끝나자마자 API를 가져올 것이다.
     useEffect(() => {
         GetMovie();
-        console.log(data);
-        console.log(popular);
     }, []);
 
     const StyledPopularMovie = Styled.main`
@@ -84,10 +82,10 @@ const Movies = () => {
             }
             h4{
                 margin-bottom:20px;
-                font-size:2em;
+                font-size:2rem;
             }
             p{
-                font-size:1em;
+                font-size:1rem;
             }
             .popular__controls{
                 display:flex;
@@ -152,6 +150,7 @@ const Movies = () => {
                                 overview={movie.overview}
                                 vote_average={movie.vote_average}
                                 vote_count={movie.vote_count}
+                                backdrop_path={movie.backdrop_path}
                                 poster_path={`https://image.tmdb.org/t/p/w300/${movie.poster_path}`}
                                 genres={movie.genres.map(genre => genre.name)}
                             />
@@ -196,6 +195,7 @@ function PopularData({ id, title, overview, vote_average, vote_count, poster_pat
                                     vote_average,
                                     vote_count,
                                     poster_path,
+                                    backdrop_path,
                                     genres,
                                 },
                             }}
@@ -210,7 +210,7 @@ function PopularData({ id, title, overview, vote_average, vote_count, poster_pat
     );
 }
 
-function MoviesData({ id, title, overview, vote_average, vote_count, poster_path, genres }) {
+function MoviesData({ id, title, overview, vote_average, vote_count, poster_path, backdrop_path, genres }) {
     //data를 잘 가져왔다면, data 안에 title을 렌더링 할 것이다.
     return (
         <Link
@@ -222,6 +222,7 @@ function MoviesData({ id, title, overview, vote_average, vote_count, poster_path
                     vote_average,
                     vote_count,
                     poster_path,
+                    backdrop_path,
                     genres,
                 },
             }}

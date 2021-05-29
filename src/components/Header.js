@@ -1,6 +1,6 @@
-import React from "react";
-import Styled from "styled-components";
-import { Link, withRouter } from "react-router-dom";
+import React from 'react';
+import Styled from 'styled-components';
+import { Link, withRouter } from 'react-router-dom';
 
 const StyledHeader = Styled.header`
     height:40px;
@@ -11,7 +11,6 @@ const StyledHeader = Styled.header`
     justify-content:space-between;
     height:100%;
     padding:10px;
-    margin:auto;
     .header__column--left{
         display:flex;
         align-items:center;
@@ -67,7 +66,7 @@ const Header = () => {
                     </p>
                 </Link>
                 <div className="controls">
-                    <Link to="/test">영화</Link>
+                    <Link to="/">영화</Link>
                     <Link to="/test">TV 프로그램</Link>
                     <Link to="/test">책</Link>
                 </div>
